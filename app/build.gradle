@@ -22,7 +22,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', "\"$baseUrlDebug\""
+        }
         release {
+            buildConfigField 'String', 'BASE_URL', "\"$baseUrlRelease\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -52,7 +56,8 @@ dependencies {
     implementation "android.arch.paging:runtime:$paging_version"
     // Typical Libraries
     // Moshi - Data Parsing Library
-    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
     // RetroFit2 - Network library and Data parsing converter
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
