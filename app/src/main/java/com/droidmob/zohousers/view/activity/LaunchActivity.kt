@@ -1,20 +1,21 @@
 package com.droidmob.zohousers.view.activity
 
 import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.droidmob.zohousers.viewmodel.LaunchViewModel
 import com.droidmob.zohousers.R
+import com.droidmob.zohousers.databinding.ActivityLaunchBinding
+import com.droidmob.zohousers.viewmodel.LaunchViewModel
 
-class LaunchActivity : AppCompatActivity() {
+class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
 
-    val viewModel: LaunchViewModel by lazy {
-        ViewModelProviders.of(this).get(LaunchViewModel::class.java)
+
+    override fun setupLayoutRes() = R.layout.activity_launch
+
+    override fun initialiseViewModel(): LaunchViewModel {
+        return ViewModelProviders.of(this).get(LaunchViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launch)
-        viewModel.onCreate(intent.extras)
+    override fun onViewModelCreated() {
     }
+
+
 }
