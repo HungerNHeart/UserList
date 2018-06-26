@@ -22,6 +22,7 @@ class UserBoundaryCallback(
     val helper = PagingRequestHelper(threadExecutor)
 
     override fun onZeroItemsLoaded() {
+        Log.d(TAG(), "onZeroItems")
         helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) {
             val options = HashMap<String, String>()
             options["page"] = 1.toString()
@@ -33,13 +34,12 @@ class UserBoundaryCallback(
     @MainThread
     override fun onItemAtEndLoaded(itemAtEnd: UserData) {
         Log.d(TAG(),"onItemAtEndLoaded: "+itemAtEnd.id)
-        /*helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
-            apiClient.zohoApiServices().getUsers().getTopAfter(
-                    subreddit = subredditName,
-                    after = itemAtEnd.name,
-                    limit = networkPageSize)
+        helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
+            val options= HashMap<String, String>()
+            options["page"] = (itemAtEnd.page+1).toString()
+            apiClient.zohoApiServices().getUsers(options)
                     .enqueue(createWebserviceCallback(it))
-        }*/
+        }
     }
 
 

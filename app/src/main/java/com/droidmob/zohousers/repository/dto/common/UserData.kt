@@ -1,6 +1,8 @@
 package com.droidmob.zohousers.repository.dto.common
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
 import com.squareup.moshi.Json
 
@@ -13,5 +15,8 @@ data class UserData(
         @Json(name = "last_name")
         val lastName: String,
         @Json(name = "avatar")
-        val thumbnail: String
-)
+        val thumbnail: String) {
+
+
+        var page: Int = -1
+}

@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.LinearLayout
+import com.droidmob.moviesurf_yify.adapter.decorator.VerticalSpaceItemDecoration
 import com.droidmob.zohousers.R
 import com.droidmob.zohousers.databinding.ActivityLaunchBinding
 import com.droidmob.zohousers.view.adapter.UserListAdapter
@@ -28,9 +30,10 @@ class LaunchActivity : BaseActivity<ActivityLaunchBinding, LaunchViewModel>() {
 
     override fun onViewModelCreated() {
         userListAdapter = UserListAdapter()
-        userList.layoutManager = LinearLayoutManager(this)
+        userList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         userList.adapter = userListAdapter
-        viewModel.userRepository.getUsers(4).observe(this, Observer {
+        userList.addItemDecoration(VerticalSpaceItemDecoration(16, VerticalSpaceItemDecoration.Position.BOTTOM))
+        viewModel.userRepository.getUsers(1).observe(this, Observer {
             userListAdapter.submitList(it)
         })
     }

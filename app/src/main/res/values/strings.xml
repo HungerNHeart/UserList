@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Zoho Users</string>
+    <string name="user_profile_image">User Profile image</string>
 </resources>

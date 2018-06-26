@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
 interface ZohoApiService {
-    @GET("users?page=1")
+    @GET("users")
     fun getUsers(@QueryMap options: Map<String, String>): Call<UserResponse>
 }

@@ -47,14 +47,18 @@ class UserRepository(
                 apiClient = apiClient,
                 insertOperation = this::insertIntoDatabase,
                 threadExecutor = Executors.newSingleThreadExecutor(),
-                pageSize = 3)
+                pageSize = pageSize)
         val dataSourceFactory = database.users().getUser()
         return LivePagedListBuilder(dataSourceFactory, pageSize)
             .setBoundaryCallback(boundaryCallback).build()
     }
 
     fun insertIntoDatabase(@NonNull userResponse: UserResponse) {
+        Log.d(TAG(), "insertIntoDatabase: "+userResponse.toString())
         val users = userResponse.users
+        users.map { child ->
+            child.page = userResponse.page
+        }
         database.runInTransaction {
             database.users().insert(users)
         }

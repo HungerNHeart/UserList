@@ -48,7 +48,7 @@ class ApiClient(val context: Context) {
         // addItem logging as last interceptor
         httpClient.addInterceptor(logging)
         retrofit = Retrofit.Builder()
-                .client(httpClient.build())
+                //.client(httpClient.build())
                 .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(
                         MoshiConverterFactory

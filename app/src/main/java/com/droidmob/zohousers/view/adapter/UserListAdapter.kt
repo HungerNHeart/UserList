@@ -13,7 +13,7 @@ class UserListAdapter : PagedListAdapter<UserData, UserListViewHolder>(USER_COMP
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
         return UserListViewHolder(
-                DataBindingUtil.bind(LayoutInflater.from(parent.context).inflate(R.layout.inflater_user_list_item, null)))
+                DataBindingUtil.bind(LayoutInflater.from(parent.context).inflate(R.layout.inflater_user_list_item, parent, false)))
     }
 
     override fun onBindViewHolder(holder: UserListViewHolder, position: Int) {
