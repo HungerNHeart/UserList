@@ -7,8 +7,6 @@
         android:layout_height="match_parent"
         tools:context=".view.activity.LaunchActivity">
 
-        <include layout="@layout/inflater_user_list_item" />
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/userList"
             android:layout_width="match_parent"

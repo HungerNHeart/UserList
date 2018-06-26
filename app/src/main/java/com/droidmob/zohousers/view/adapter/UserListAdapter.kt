@@ -12,7 +12,8 @@ import com.droidmob.zohousers.view.viewholder.UserListViewHolder
 class UserListAdapter : PagedListAdapter<UserData, UserListViewHolder>(USER_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListViewHolder {
-        return UserListViewHolder(DataBindingUtil.bind(LayoutInflater.from(parent.context).inflate(R.layout.inflater_user_list_item, null)))
+        return UserListViewHolder(
+                DataBindingUtil.bind(LayoutInflater.from(parent.context).inflate(R.layout.inflater_user_list_item, null)))
     }
 
     override fun onBindViewHolder(holder: UserListViewHolder, position: Int) {

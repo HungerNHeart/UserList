@@ -6,6 +6,6 @@ import com.droidmob.zohousers.repository.dto.common.UserData
 class UserListViewHolder(viewDataBinding: InflaterUserListItemBinding?) : BaseViewHolder<UserData, InflaterUserListItemBinding>(viewDataBinding) {
 
     override fun populateData(data: UserData?) {
-//        viewDataBinding.setUserData(data)
+        viewDataBinding?.setUserData(data)
     }
 }
