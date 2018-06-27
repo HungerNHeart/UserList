@@ -1,17 +1,21 @@
 package com.droidmob.zohousers.viewmodel
 
-import android.content.Context
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Transformations
+import android.arch.paging.PagedList
 import android.os.Bundle
-import android.util.Log
 import com.droidmob.zohousers.repository.UserRepository
-import java.util.concurrent.Executors
+import com.droidmob.zohousers.repository.dto.common.UserData
+import com.droidmob.zohousers.view.adapter.UserListAdapter
 
-class LaunchViewModel(val context: Context) : BaseViewModel() {
 
-    val userRepository = UserRepository(context)
+class LaunchViewModel : BaseViewModel() {
+
+    val userPageList: LiveData<PagedList<UserData>> by lazy {
+        UserRepository().getUsers(1)
+    }
     override fun onCreate(bundle: Bundle?) {
-        Executors.newSingleThreadExecutor().execute {
-            Log.d(TAG, "user->database: " + userRepository.database.users().getUsers().toString())
-        }
+
     }
 }

@@ -7,6 +7,7 @@ import android.content.Context
 import com.droidmob.zohousers.BuildConfig
 import com.droidmob.zohousers.repository.database.dao.UserDao
 import com.droidmob.zohousers.repository.dto.common.UserData
+import javax.inject.Inject
 
 @Database(
         entities = arrayOf(UserData::class),

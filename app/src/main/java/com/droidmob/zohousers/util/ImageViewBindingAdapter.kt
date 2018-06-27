@@ -19,6 +19,7 @@ class ImageViewBindingAdapter {
             try {
                 Glide.with(imageView.context)
                         .load(url)
+                        .transition(withCrossFade())
                         .apply(RequestOptions().transform(CircleCrop()))
                         .transition(withCrossFade())
                         .into(imageView)

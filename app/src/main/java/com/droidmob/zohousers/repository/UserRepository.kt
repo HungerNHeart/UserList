@@ -17,11 +17,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.concurrent.Executors
 
-class UserRepository(
-        val context: Context) {
+class UserRepository: BaseRepository() {
 
     val database= ZohoDatabase.create(context)
-    val apiClient by lazy { ApiClient(context) }
 
     fun loadNewUser(){
         val option = HashMap<String, String>()
