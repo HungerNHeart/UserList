@@ -19,7 +19,7 @@ import java.util.concurrent.Executors
 class UserRepository : BaseRepository() {
 
 
-    val database = ZohoDatabase.create(context)
+    var database = ZohoDatabase.create(context)
 
     fun loadNewUser() {
         val option = HashMap<String, String>()

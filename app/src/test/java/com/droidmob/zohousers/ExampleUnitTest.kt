@@ -5,6 +5,7 @@ import android.arch.lifecycle.Observer
 import android.arch.paging.PagedList
 import android.support.test.InstrumentationRegistry
 import com.droidmob.zohousers.repository.UserRepository
+import com.droidmob.zohousers.repository.database.ZohoDatabase
 import com.droidmob.zohousers.repository.dto.common.UserData
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
@@ -28,6 +29,7 @@ class ExampleUnitTest {
 
     @Test
     fun emptyList() {
+        userRepository.database = ZohoDatabase.create(context)
         val listing = userRepository.getUsers(1)
         val pagedList = getPagedList(listing)
         MatcherAssert.assertThat(pagedList.size, CoreMatchers.`is`(0))
