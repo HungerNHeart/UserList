@@ -1,3 +1,8 @@
 package com.droidmob.zohousers.util
 
-fun Any.TAG() = javaClass.simpleName
+import android.util.Log
+
+
+fun Any.Log(message: String){
+    Log.d(javaClass.simpleName, message)
+}

@@ -2,12 +2,11 @@ package com.droidmob.zohousers.repository.datasource
 
 import android.arch.paging.PagedList
 import android.support.annotation.MainThread
-import android.util.Log
 
 import com.droidmob.zohousers.repository.dto.common.UserData
 import com.droidmob.zohousers.repository.dto.response.UserResponse
 import com.droidmob.zohousers.repository.webservice.ApiClient
-import com.droidmob.zohousers.util.TAG
+import com.droidmob.zohousers.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +21,7 @@ class UserBoundaryCallback(
     val helper = PagingRequestHelper(threadExecutor)
 
     override fun onZeroItemsLoaded() {
-        Log.d(TAG(), "onZeroItems")
+        Log("onZeroItems")
         helper.runIfNotRunning(PagingRequestHelper.RequestType.INITIAL) {
             val options = HashMap<String, String>()
             options["page"] = 1.toString()
@@ -33,7 +32,7 @@ class UserBoundaryCallback(
 
     @MainThread
     override fun onItemAtEndLoaded(itemAtEnd: UserData) {
-        Log.d(TAG(),"onItemAtEndLoaded: "+itemAtEnd.id)
+        Log("onItemAtEndLoaded: "+itemAtEnd.id)
         helper.runIfNotRunning(PagingRequestHelper.RequestType.AFTER) {
             val options= HashMap<String, String>()
             options["page"] = (itemAtEnd.page+1).toString()
@@ -49,14 +48,14 @@ class UserBoundaryCallback(
             override fun onFailure(
                     call: Call<UserResponse>,
                     t: Throwable) {
-                Log.d(this.TAG(), "failure: "+t.toString())
+                Log( "failure: "+t.toString())
                 it.recordFailure(t)
             }
 
             override fun onResponse(
                     call: Call<UserResponse>,
                     response: Response<UserResponse>) {
-                Log.d(this.TAG(), "success: "+response.toString())
+                Log("success: "+response.toString())
                 insertItemsIntoDb(response, it)
             }
         }

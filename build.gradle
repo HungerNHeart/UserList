@@ -5,7 +5,7 @@ buildscript {
     ext.baseUrlDebug = 'https://reqres.in/api/'
     ext.baseUrlRelease = 'https://reqres.in/api/'
 
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.50'
     ext.gradle_version = '3.1.3'
     ext.support_library_version = "27.1.1"
     ext.constraint_layout_version = "1.1.2"
